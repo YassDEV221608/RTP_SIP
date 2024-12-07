@@ -1,0 +1,1322 @@
+./
+    SipClient.form
+    SipClient.java
+    SipClientUI.java
+    SIPClient_RTP.java
+    TP_RTP.java
+    ReceiveRTP/
+        ReceiveRTP.java
+    TransmitRTP/
+        TransmitRTP.java
+
+
+File: .\SipClient.form
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="SIP Client"/>
+    <Property name="locationByPlatform" type="boolean" value="true"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="onOpen"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="scrollPane" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="buttonRegisterStateless" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="buttonRegisterStatefull" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="buttonInvite" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="buttonBye" min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="textField" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="textField" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="scrollPane" pref="230" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonRegisterStateless" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonInvite" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonBye" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonRegisterStatefull" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="scrollPane">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="textArea">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="buttonRegisterStateless">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reg (SL)"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onRegisterStateless"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonRegisterStatefull">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reg (SF)"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onRegisterStatefull"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonInvite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Invite"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onInvite"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonBye">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bye"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="onBye"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="textField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="sip:alice@localhost:5060"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
+
+
+
+
+File: .\SipClient.java
+
+package emi.sip;
+
+import javax.sdp.MediaDescription;
+import javax.sdp.SdpException;
+import javax.sip.*;
+import javax.sip.address.*;
+import javax.sip.address.URI;
+import javax.sip.header.*;
+import javax.sip.message.*;
+import javax.swing.*;
+import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Random;
+import java.util.Vector;
+import java.net.*;
+import javax.sip.Dialog;
+import javax.sdp.*;
+import javax.sip.ClientTransaction;
+import javax.sip.message.Request;
+import javax.sip.message.Response;
+import javax.sip.header.CSeqHeader;
+
+
+
+public class SipClient extends JFrame implements SipListener {
+
+    // SIP-related objects
+    private SipFactory sipFactory;
+    private SipStack sipStack;
+    private SipProvider sipProvider;
+    private MessageFactory messageFactory;
+    private HeaderFactory headerFactory;
+    private AddressFactory addressFactory;
+    private ListeningPoint listeningPoint;
+    private Properties properties;
+
+    private String transport;
+
+    // Local configuration
+    private String ip;
+    private int port = 6060;
+    private String protocol = "tcp";
+    private int tag = new Random().nextInt();
+    private Address contactAddress;
+    private ContactHeader contactHeader;
+
+    private SdpFactory sdpFactory;
+    private Dialog dialogClient;
+
+    // UI components
+    private javax.swing.JButton buttonBye;
+    private javax.swing.JButton buttonInvite;
+    private javax.swing.JButton buttonRegisterStatefull;
+    private javax.swing.JButton buttonRegisterStateless;
+    private javax.swing.JScrollPane scrollPane;
+    private javax.swing.JTextArea textArea;
+    private javax.swing.JTextField textField;
+
+    private JTextArea textAreaMsgRecu;
+    private JTextArea textAreaMsgSent;
+
+    /**
+     * Constructor to initialize the SIP Client
+     */
+    public SipClient() {
+        initComponents();
+    }
+
+    private void initComponents() {
+        scrollPane = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        buttonRegisterStateless = new javax.swing.JButton();
+        buttonRegisterStatefull = new javax.swing.JButton();
+        buttonInvite = new javax.swing.JButton();
+        buttonBye = new javax.swing.JButton();
+        textField = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SIP Client");
+        setLocationByPlatform(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                onOpen();
+            }
+        });
+
+        textArea.setEditable(false);
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        scrollPane.setViewportView(textArea);
+
+        buttonRegisterStateless.setText("Reg (SL)");
+        buttonRegisterStateless.setEnabled(true);
+        buttonRegisterStateless.addActionListener(evt -> onRegisterStateless(evt));
+
+        buttonRegisterStatefull.setText("Reg (SF)");
+        buttonRegisterStatefull.setEnabled(true);
+        buttonRegisterStatefull.addActionListener(evt -> onRegisterStatefull(evt));
+
+
+        // buttonInvite.setText("Invite");
+        // buttonInvite.setEnabled(true);
+        //buttonInvite.addActionListener(evt -> onInvite(evt));
+
+        //buttonBye.setText("Bye");
+        //buttonBye.setEnabled(true);
+        buttonBye.addActionListener(evt -> onBye(evt));
+        textField.setText("sip:alice@localhost:5060");
+
+
+        // Layout settings
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(scrollPane)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(buttonRegisterStateless, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buttonRegisterStatefull, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buttonInvite, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(buttonBye, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 2, Short.MAX_VALUE))
+                                        .addComponent(textField))
+                                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(buttonRegisterStateless)
+                                        .addComponent(buttonInvite)
+                                        .addComponent(buttonBye)
+                                        .addComponent(buttonRegisterStatefull))
+                                .addContainerGap())
+        );
+
+        pack();
+    }
+    public void setUiComponents(JTextArea textAreaMsgRecu, JTextArea textAreaMsgSent) {
+        this.textAreaMsgRecu = textAreaMsgRecu;
+        this.textAreaMsgSent = textAreaMsgSent;
+    }
+    public void onOpen() {
+        try {
+            System.out.println("Initialisation de la pile SIP...");
+
+            // Initialisation des valeurs
+            ip = InetAddress.getLocalHost().getHostAddress();
+            port = 6060; // Définir un port par défaut
+            transport = "udp"; // Ou "tcp", selon votre besoin
+
+            System.out.println("IP locale : " + ip);
+            System.out.println("Port : " + port);
+            System.out.println("Transport : " + transport);
+
+            // Création de SipFactory
+            sipFactory = SipFactory.getInstance();
+            sipFactory.setPathName("gov.nist");
+            System.out.println("SipFactory initialisée.");
+
+            // Configuration des propriétés
+            properties = new Properties();
+            properties.setProperty("javax.sip.STACK_NAME", "stack");
+            properties.setProperty("javax.sip.IP_ADDRESS", ip);
+            properties.setProperty("gov.nist.javax.sip.TRACE_LEVEL", "32");
+            properties.setProperty("gov.nist.javax.sip.DEBUG_LOG", "sip_debug_log.txt");
+            properties.setProperty("gov.nist.javax.sip.SERVER_LOG", "sip_server_log.txt");
+
+            // Création de la pile SIP
+            sipStack = sipFactory.createSipStack(properties);
+            System.out.println("Pile SIP créée.");
+
+            // Création des factories SIP
+            messageFactory = sipFactory.createMessageFactory();
+            headerFactory = sipFactory.createHeaderFactory();
+            addressFactory = sipFactory.createAddressFactory();
+            System.out.println("Factories SIP créées.");
+
+            // Création du ListeningPoint et du SipProvider
+            listeningPoint = sipStack.createListeningPoint(ip, port, transport);
+            sipProvider = sipStack.createSipProvider(listeningPoint);
+            sipProvider.addSipListener(this);
+            System.out.println("ListeningPoint et SipProvider configurés.");
+
+            // Création de l'adresse de contact
+            contactAddress = addressFactory.createAddress("sip:" + ip + ":" + port);
+            contactHeader = headerFactory.createContactHeader(contactAddress);
+            System.out.println("Adresse de contact créée : " + contactAddress);
+            if (contactHeader == null) {
+                throw new IllegalStateException("ContactHeader n'a pas pu être initialisé.");
+            }
+            System.out.println("ContactHeader initialisé : " + contactHeader);
+
+
+            System.out.println("Pile SIP initialisée avec succès.");
+        } catch (Exception e) {
+            System.err.println("Erreur lors de l'initialisation de la pile SIP : " + e.getMessage());
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+    private void onRegisterStateless(java.awt.event.ActionEvent evt) {
+        try {
+            Address addressTo = addressFactory.createAddress(textField.getText());
+            javax.sip.address.URI requestURI = addressTo.getURI();
+
+            ArrayList<ViaHeader> viaHeaders = new ArrayList<>();
+            ViaHeader viaHeader = headerFactory.createViaHeader(ip, port, protocol, null);
+            viaHeaders.add(viaHeader);
+
+            MaxForwardsHeader maxForwardsHeader = headerFactory.createMaxForwardsHeader(70);
+            CallIdHeader callIdHeader = sipProvider.getNewCallId();
+            CSeqHeader cSeqHeader = headerFactory.createCSeqHeader(1L, Request.REGISTER);
+            FromHeader fromHeader = headerFactory.createFromHeader(contactAddress, String.valueOf(tag));
+            ToHeader toHeader = headerFactory.createToHeader(addressTo, null);
+
+            Request request = messageFactory.createRequest(
+                    requestURI,
+                    Request.REGISTER,
+                    callIdHeader,
+                    cSeqHeader,
+                    fromHeader,
+                    toHeader,
+                    viaHeaders,
+                    maxForwardsHeader
+            );
+
+            request.addHeader(contactHeader);
+            sipProvider.sendRequest(request);
+
+            textArea.append("Request sent:\n" + request.toString() + "\n\n");
+        } catch (Exception e) {
+            textArea.append("Request failed: " + e.getMessage() + "\n");
+        }
+    }
+
+    private void onRegisterStatefull(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onRegisterStatefull
+        try {
+            // Obtenir l’adresse de destination à partir du champ texte
+            Address addressTo = this.addressFactory.createAddress(this.textField.getText());
+            URI requestURI = addressTo.getURI();
+
+            // Créer les entêtes nécessaires pour la requête REGISTER
+            ArrayList<ViaHeader> viaHeaders = new ArrayList<>();
+            ViaHeader viaHeader = this.headerFactory.createViaHeader(this.ip, this.port, this.protocol, null);
+            viaHeaders.add(viaHeader);
+
+            MaxForwardsHeader maxForwards = this.headerFactory.createMaxForwardsHeader(70);
+            CallIdHeader callId = this.sipProvider.getNewCallId();
+            CSeqHeader cSeq = this.headerFactory.createCSeqHeader(1L, Request.REGISTER);
+            FromHeader from = this.headerFactory.createFromHeader(this.contactAddress, String.valueOf(this.tag));
+            ToHeader to = this.headerFactory.createToHeader(addressTo, null);
+
+            // Créer la requête REGISTER
+            Request request = this.messageFactory.createRequest(
+                    requestURI,
+                    Request.REGISTER,
+                    callId,
+                    cSeq,
+                    from,
+                    to,
+                    viaHeaders,
+                    maxForwards
+            );
+
+            // Ajouter l'entête "Contact" à la requête
+            request.addHeader(contactHeader);
+
+            // Commentez cette ligne pour éviter un envoi en mode Stateless
+            // sipProvider.sendRequest(request);
+
+            // Créer une nouvelle transaction cliente SIP
+            ClientTransaction transaction = this.sipProvider.getNewClientTransaction(request);
+
+            // Envoyer la requête via la transaction stateful
+            transaction.sendRequest();
+
+            // Afficher le message dans le champ texte
+            this.textArea.append("Stateful REGISTER request sent:\n" + request.toString() + "\n");
+        } catch (Exception e) {
+            // Afficher l'erreur en cas de problème
+            this.textArea.append("Failed to send stateful REGISTER request: " + e.getMessage() + "\n");
+        }
+    }//GEN-LAST:event_onRegisterStatefull
+
+    public void onInvite(String destinationSIP) {
+        try {
+            // Extraction de l'adresse IP depuis l'URI SIP
+            String ipAddress = destinationSIP.split(":")[1].split(";")[0]; // "sip:10.72.154.17:6060" -> "10.72.154.17"
+
+            // Validation des paramètres nécessaires
+            if (this.ip == null || this.port == 0 || this.transport == null) {
+                throw new IllegalStateException("Impossible d'envoyer l'invitation : IP, port ou transport non initialisé.");
+            }
+
+            System.out.println("Valeurs pour createViaHeader :");
+            System.out.println("IP : " + this.ip);
+            System.out.println("Port : " + this.port);
+            System.out.println("Transport : " + this.transport);
+
+            // Étape 1 : Création de l'adresse SIP
+            Address addressTo = this.addressFactory.createAddress("sip:" + ipAddress + ":6060");  // Utilisation de l'adresse IP extraite
+            System.out.println("Adresse SIP créée : " + addressTo);
+
+            // Étape 2 : Création des en-têtes SIP
+            ToHeader toHeader = this.headerFactory.createToHeader(addressTo, null);
+            javax.sip.address.URI requestURI = addressTo.getURI();
+            System.out.println("URI de la requête : " + requestURI);
+
+            // Étape 3 : Préparation des en-têtes INVITE
+            ArrayList<ViaHeader> viaHeaders = new ArrayList<>();
+            ViaHeader viaHeader = this.headerFactory.createViaHeader(this.ip, this.port, this.transport, null);
+            viaHeaders.add(viaHeader);
+
+            CallIdHeader callIdHeader = this.sipProvider.getNewCallId();
+            CSeqHeader cSeqHeader = this.headerFactory.createCSeqHeader(1L, Request.INVITE);
+            MaxForwardsHeader maxForwards = this.headerFactory.createMaxForwardsHeader(70);
+            FromHeader fromHeader = this.headerFactory.createFromHeader(this.contactAddress, String.valueOf(this.tag));
+
+            // Étape 4 : Création de la requête INVITE
+            Request request = this.messageFactory.createRequest(
+                    requestURI, Request.INVITE, callIdHeader, cSeqHeader, fromHeader, toHeader, viaHeaders, maxForwards
+            );
+            System.out.println("Requête INVITE créée : \n" + request);
+            if (this.contactHeader == null) {
+                throw new IllegalStateException("ContactHeader non initialisé dans onInvite.");
+            }
+            request.addHeader(this.contactHeader);
+            System.out.println("En-tête Contact ajouté : " + this.contactHeader);
+
+            // Étape 5 : Ajout du SDP
+            String sdpData = createSDPData(50002, 22222); // Ports pour audio et vidéo
+            ContentTypeHeader contentTypeHeader = this.headerFactory.createContentTypeHeader("application", "sdp");
+            request.setContent(sdpData, contentTypeHeader);
+            System.out.println("SDP ajouté à la requête.");
+
+            // Étape 6 : Création de la transaction INVITE
+            ClientTransaction inviteTid = this.sipProvider.getNewClientTransaction(request);
+
+            // Étape 7 : Envoi de la requête INVITE
+            inviteTid.sendRequest();
+            System.out.println("Requête INVITE envoyée avec succès.");
+            if (textAreaMsgSent != null) {
+                textAreaMsgSent.append("Requête INVITE envoyée :\n" + request.toString() + "\n");
+            }
+        } catch (IllegalStateException e) {
+            System.err.println("Erreur dans onInvite : " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Erreur inattendue dans onInvite : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    public void onBye(java.awt.event.ActionEvent evt) {
+        try {
+            if (dialogClient == null) {
+                textArea.append("No active dialog to send BYE.\n");
+                return;
+            }
+
+            // Créer une requête BYE
+            Request byeRequest = dialogClient.createRequest(Request.BYE);
+            ClientTransaction byeTransaction = sipProvider.getNewClientTransaction(byeRequest);
+            dialogClient.sendRequest(byeTransaction);
+            textArea.append("BYE request sent.\n");
+        } catch (Exception e) {
+            textArea.append("Error sending BYE: " + e.getMessage() + "\n");
+        }
+    }
+
+    public String createSDPData(int localBasePort, int remoteBasePort) {
+        try {
+            sdpFactory = SdpFactory.getInstance();
+            SessionDescription sessDescr = sdpFactory.createSessionDescription();
+            String myIPAddr = InetAddress.getLocalHost().getHostAddress();
+
+            // "v=0"
+            Version v = sdpFactory.createVersion(0);
+            // "o=" (origin)
+            Origin o = sdpFactory.createOrigin("1234", 0, 0, "IN", "IP4", myIPAddr);
+            // "s=-" (session name)
+            SessionName s = sdpFactory.createSessionName("-");
+            // "c=" (connection)
+            Connection c = sdpFactory.createConnection("IN", "IP4", myIPAddr);
+            // "t=0 0" (timing)
+            TimeDescription t = sdpFactory.createTimeDescription();
+            Vector<TimeDescription> timeDescs = new Vector<>();
+            timeDescs.add(t);
+
+            // Description des médias (audio)
+            String[] audioFormats = {"0", "4", "18"}; // Formats audio pour RTP
+            MediaDescription am = sdpFactory.createMediaDescription("audio", localBasePort, 1, "RTP/AVP", audioFormats);
+
+            // Description des médias (vidéo)
+            String[] videoFormats = {"34"}; // Formats vidéo pour RTP
+            MediaDescription vm = sdpFactory.createMediaDescription("video", remoteBasePort, 1, "RTP/AVP", videoFormats);
+
+            // Ajouter les descriptions de médias
+            Vector<MediaDescription> mediaDescs = new Vector<>();
+            mediaDescs.add(am);
+            mediaDescs.add(vm);
+
+            // Configurer la session
+            sessDescr.setVersion(v);
+            sessDescr.setOrigin(o);
+            sessDescr.setConnection(c);
+            sessDescr.setSessionName(s);
+            sessDescr.setTimeDescriptions(timeDescs);
+            sessDescr.setMediaDescriptions(mediaDescs);
+
+            return sessDescr.toString();
+        } catch (SdpException | UnknownHostException exc) {
+            System.out.println("Erreur lors de la génération du SDP.");
+            exc.printStackTrace();
+        }
+
+        return "No SDP set";
+    }
+
+    @Override
+    public void processRequest(RequestEvent requestEvent) {
+        try {
+            Request request = requestEvent.getRequest();
+            String method = request.getMethod();
+
+            System.out.println("Requête reçue : " + method);
+            if (textAreaMsgRecu != null) {
+                textAreaMsgRecu.append("Requête reçue :\n" + request.toString() + "\n");
+            }
+
+            if (method.equals(Request.INVITE)) {
+                // Envoyer une réponse 180 Ringing
+                Response ringingResponse = messageFactory.createResponse(Response.RINGING, request);
+
+                // Vérifier si une transaction serveur existe, sinon en créer une
+                ServerTransaction serverTransaction = requestEvent.getServerTransaction();
+                if (serverTransaction == null) {
+                    System.out.println("Création d'une nouvelle transaction serveur pour INVITE...");
+                    serverTransaction = sipProvider.getNewServerTransaction(request);
+                }
+
+                serverTransaction.sendResponse(ringingResponse);
+                System.out.println("180 Ringing envoyé pour la requête INVITE.");
+
+                // Envoyer une réponse 200 OK pour accepter l'appel
+                Response okResponse = messageFactory.createResponse(Response.OK, request);
+                Address localContactAddress = addressFactory.createAddress("sip:" + ip + ":" + port);
+                ContactHeader localContactHeader = headerFactory.createContactHeader(localContactAddress);
+                okResponse.addHeader(localContactHeader);
+
+                serverTransaction.sendResponse(okResponse);
+                System.out.println("200 OK envoyé pour la requête INVITE.");
+
+                // Stocker le dialogue pour de futures interactions
+                this.dialogClient = serverTransaction.getDialog();
+            } else if (method.equals(Request.BYE)) {
+                // Gérer les requêtes BYE pour terminer la session
+                Response okResponse = messageFactory.createResponse(Response.OK, request);
+
+                ServerTransaction serverTransaction = requestEvent.getServerTransaction();
+                if (serverTransaction == null) {
+                    System.out.println("Création d'une nouvelle transaction serveur pour BYE...");
+                    serverTransaction = sipProvider.getNewServerTransaction(request);
+                }
+
+                serverTransaction.sendResponse(okResponse);
+                System.out.println("200 OK envoyé pour la requête BYE.");
+
+                // Réinitialiser le dialogue
+                this.dialogClient = null;
+            } else {
+                System.out.println("Requête non gérée reçue : " + request.toString());
+            }
+        } catch (Exception e) {
+            System.err.println("Erreur lors du traitement de la requête : " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @Override
+    public void processResponse(ResponseEvent responseEvent) {
+        try {
+            Response response = responseEvent.getResponse();
+            int statusCode = response.getStatusCode();
+
+            if (statusCode == Response.OK) {
+                // Gestion des réponses INVITE
+                CSeqHeader cSeqHeader = (CSeqHeader) response.getHeader(CSeqHeader.NAME);
+                if (cSeqHeader != null && cSeqHeader.getMethod().equals(Request.INVITE)) {
+                    // Créer un ACK pour confirmer l'appel
+                    Request ackRequest = dialogClient.createAck(cSeqHeader.getSeqNumber());
+                    dialogClient.sendAck(ackRequest);
+                    System.out.println("ACK envoyé pour INVITE.");
+
+                    // Enregistrer le dialogue pour pouvoir envoyer BYE plus tard
+                    this.dialogClient = dialogClient;
+                }
+            }
+        } catch (Exception e) {
+            textArea.append("Erreur lors de l'envoi de l'ACK : " + e.getMessage() + "\n");
+        }
+    }
+
+
+    @Override
+    public void processTimeout(TimeoutEvent timeoutEvent) {
+        textArea.append("Timeout occurred.\n");
+    }
+
+    @Override
+    public void processIOException(IOExceptionEvent exceptionEvent) {
+        textArea.append("IO Exception occurred.\n");
+    }
+
+    @Override
+    public void processTransactionTerminated(TransactionTerminatedEvent transactionTerminatedEvent) {
+        textArea.append("Transaction terminated.\n");
+    }
+
+    @Override
+    public void processDialogTerminated(DialogTerminatedEvent dialogTerminatedEvent) {
+        textArea.append("Dialog terminated.\n");
+    }
+
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(() -> new SipClient().setVisible(true));
+    }
+}
+
+
+
+File: .\SipClientUI.java
+
+package emi.sip;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class SipClientUI extends JFrame {
+
+    private JTextField textFieldLocalSIP;
+    private JTextField textFieldDestinationSIP;
+    private JTextArea textAreaMsgRecu;
+    private JTextArea textAreaMsgSent;
+    private JButton buttonAppeler;
+    private JButton buttonRaccrocher;
+
+    private SipClient sipClient;
+
+    public SipClientUI() {
+        // Configuration de la fenêtre principale
+        setTitle("SIP Client");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLayout(null);
+
+        // Initialisation des composants graphiques
+        JLabel labelLocalSIP = new JLabel("Adresse SIP locale:");
+        labelLocalSIP.setBounds(20, 20, 150, 25);
+        add(labelLocalSIP);
+
+        // Récupérer l'adresse IP locale et l'afficher avec un port d'écoute
+        String localAddress = getLocalIPAddress();
+        String localSIP = "sip:" + localAddress + ":6060"; // Port d'écoute 6060
+        textFieldLocalSIP = new JTextField(localSIP);
+        textFieldLocalSIP.setBounds(180, 20, 380, 25);
+        textFieldLocalSIP.setEditable(false);
+        add(textFieldLocalSIP);
+
+        JLabel labelDestinationSIP = new JLabel("Adresse SIP destination:");
+        labelDestinationSIP.setBounds(20, 60, 150, 25);
+        add(labelDestinationSIP);
+
+        textFieldDestinationSIP = new JTextField();
+        textFieldDestinationSIP.setBounds(180, 60, 380, 25);
+        add(textFieldDestinationSIP);
+
+        JLabel labelMsgRecu = new JLabel("Messages SIP reçus:");
+        labelMsgRecu.setBounds(20, 100, 150, 25);
+        add(labelMsgRecu);
+
+        textAreaMsgRecu = new JTextArea();
+        JScrollPane scrollPaneRecu = new JScrollPane(textAreaMsgRecu);
+        scrollPaneRecu.setBounds(20, 130, 260, 150);
+        add(scrollPaneRecu);
+
+        JLabel labelMsgSent = new JLabel("Messages SIP envoyés:");
+        labelMsgSent.setBounds(310, 100, 150, 25);
+        add(labelMsgSent);
+
+        textAreaMsgSent = new JTextArea();
+        JScrollPane scrollPaneSent = new JScrollPane(textAreaMsgSent);
+        scrollPaneSent.setBounds(310, 130, 260, 150);
+        add(scrollPaneSent);
+
+        // Bouton "Appeler"
+        buttonAppeler = new JButton("Appeler");
+        buttonAppeler.setBounds(150, 300, 120, 30);
+        add(buttonAppeler);
+
+        // Bouton "Raccrocher"
+        buttonRaccrocher = new JButton("Raccrocher");
+        buttonRaccrocher.setBounds(330, 300, 120, 30);
+        add(buttonRaccrocher);
+
+        // Initialisation de l'objet SipClient
+        sipClient = new SipClient();
+        sipClient.setUiComponents(textAreaMsgRecu, textAreaMsgSent);
+
+        System.out.println("Initialisation de la pile SIP via onOpen...");
+        sipClient.onOpen();
+
+// Ajout du gestionnaire de clic pour "Appeler"
+        buttonAppeler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String destinationSIP = textFieldDestinationSIP.getText().trim();
+                if (destinationSIP.isEmpty()) {
+                    textAreaMsgSent.append("Erreur: Adresse SIP de destination vide.\n");
+                    return;
+                }
+                try {
+                    sipClient.onInvite(destinationSIP); // Appel de la méthode onInvite
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    textAreaMsgSent.append("Erreur lors de l'appel : " + ex.getMessage() + "\n");
+                }
+            }
+        });
+
+        // Ajout du gestionnaire de clic pour "Raccrocher"
+        buttonRaccrocher.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Appeler la méthode onBye pour terminer l'appel
+                sipClient.onBye(e);
+            }
+        });
+
+
+        // Rendre la fenêtre visible
+        setVisible(true);
+    }
+
+    // Méthode pour obtenir l'adresse IP locale de la machine
+    private String getLocalIPAddress() {
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            return localHost.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "localhost"; // Retourne localhost si l'adresse IP ne peut pas être déterminée
+        }
+    }
+
+    public static void main(String[] args) {
+        // Lancer l'interface utilisateur
+        new SipClientUI();
+    }
+}
+
+
+
+File: .\SIPClient_RTP.java
+
+package emi.sip;
+
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class SIPClient_RTP extends JFrame {
+
+    private JTextField textFieldLocalSIP;
+    private JTextField textFieldDestinationSIP;
+    private JTextArea textAreaMsgRecu;
+    private JTextArea textAreaMsgSent;
+    private JButton buttonAppeler;
+    private JButton buttonRaccrocher;
+
+    private SipClient sipClient;
+    private TP_RTP rtpClient; // Intégrer le client RTP ici
+
+    private int findAvailablePort() {
+        int port = 5004; // Start from the default RTP port
+        while (port <= 5100) { // Check ports in a range (5004-5100)
+            try (java.net.DatagramSocket socket = new java.net.DatagramSocket(port)) {
+                socket.close();
+                return port; // Port is free, return it
+            } catch (java.io.IOException ex) {
+                port++; // Port is in use, try the next one
+            }
+        }
+        throw new RuntimeException("No available ports found for RTP session.");
+    }
+
+
+    public SIPClient_RTP() {
+        // Configuration de la fenêtre principale
+        setTitle("SIP Client");
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(600, 400);
+        setLayout(null);
+
+        // Initialisation des composants graphiques
+        JLabel labelLocalSIP = new JLabel("Adresse SIP locale:");
+        labelLocalSIP.setBounds(20, 20, 150, 25);
+        add(labelLocalSIP);
+
+        // Récupérer l'adresse IP locale et l'afficher avec un port d'écoute
+        String localAddress = getLocalIPAddress();
+        String localSIP = "sip:" + localAddress + ":6060"; // Port d'écoute 6060
+        textFieldLocalSIP = new JTextField(localSIP);
+        textFieldLocalSIP.setBounds(180, 20, 380, 25);
+        textFieldLocalSIP.setEditable(false);
+        add(textFieldLocalSIP);
+
+        JLabel labelDestinationSIP = new JLabel("Adresse SIP destination:");
+        labelDestinationSIP.setBounds(20, 60, 150, 25);
+        add(labelDestinationSIP);
+
+        textFieldDestinationSIP = new JTextField();
+        textFieldDestinationSIP.setBounds(180, 60, 380, 25);
+        add(textFieldDestinationSIP);
+
+        JLabel labelMsgRecu = new JLabel("Messages SIP reçus:");
+        labelMsgRecu.setBounds(20, 100, 150, 25);
+        add(labelMsgRecu);
+
+        textAreaMsgRecu = new JTextArea();
+        JScrollPane scrollPaneRecu = new JScrollPane(textAreaMsgRecu);
+        scrollPaneRecu.setBounds(20, 130, 260, 150);
+        add(scrollPaneRecu);
+
+        JLabel labelMsgSent = new JLabel("Messages SIP envoyés:");
+        labelMsgSent.setBounds(310, 100, 150, 25);
+        add(labelMsgSent);
+
+        textAreaMsgSent = new JTextArea();
+        JScrollPane scrollPaneSent = new JScrollPane(textAreaMsgSent);
+        scrollPaneSent.setBounds(310, 130, 260, 150);
+        add(scrollPaneSent);
+
+        // Bouton "Appeler"
+        buttonAppeler = new JButton("Appeler");
+        buttonAppeler.setBounds(150, 300, 120, 30);
+        add(buttonAppeler);
+
+        // Bouton "Raccrocher"
+        buttonRaccrocher = new JButton("Raccrocher");
+        buttonRaccrocher.setBounds(330, 300, 120, 30);
+        add(buttonRaccrocher);
+
+        // Initialisation de l'objet SipClient
+        sipClient = new SipClient();
+        rtpClient = new TP_RTP(); // Créer l'instance de RTP
+
+        // Relier les messages reçus et envoyés SIP avec les zones de texte
+        sipClient.setUiComponents(textAreaMsgRecu, textAreaMsgSent);
+
+        // Démarrer la pile SIP
+        System.out.println("Initialisation de la pile SIP via onOpen...");
+        sipClient.onOpen();
+
+        // Gestion du bouton "Appeler"
+        buttonAppeler.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String destinationSIP = textFieldDestinationSIP.getText().trim();
+                if (destinationSIP.isEmpty()) {
+                    textAreaMsgSent.append("Erreur: Adresse SIP de destination vide.\n");
+                    return;
+                }
+                try {
+                    // Extract the IP address from the SIP URI (e.g., "sip:10.72.154.17:6060")
+                    String destinationIP = destinationSIP.split(":")[1].split(";")[0];
+
+                    // Start the SIP INVITE process
+                    sipClient.onInvite(destinationSIP);
+
+                    // Dynamically find a free local port for RTP
+                    int localPort = findAvailablePort();
+                    int remotePort = 5004; // Assume the remote port for RTP is 5004
+                    int audioFormat = 5; // ULAW format
+
+                    textAreaMsgSent.append("Initialisation de la session RTP...\n");
+                    textAreaMsgSent.append("Port local RTP: " + localPort + "\n");
+
+                    // Start the RTP session
+                    rtpClient.demarrerSession(destinationIP, remotePort, localPort, audioFormat);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    textAreaMsgSent.append("Erreur lors de l'appel : " + ex.getMessage() + "\n");
+                }
+            }
+        });
+
+
+
+        // Gestion du bouton "Raccrocher"
+        buttonRaccrocher.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Terminer l'appel et fermer la session RTP
+                sipClient.onBye(e);
+                rtpClient.arreterSession(); // Arrêter la session RTP
+            }
+        });
+
+        // Rendre la fenêtre visible
+        setVisible(true);
+    }
+
+    // Méthode pour obtenir l'adresse IP locale de la machine
+    private String getLocalIPAddress() {
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            return localHost.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "localhost"; // Retourne localhost si l'adresse IP ne peut pas être déterminée
+        }
+    }
+
+    public static void main(String[] args) {
+        // Lancer l'interface utilisateur
+        new SIPClient_RTP();
+    }
+}
+
+
+
+
+File: .\TP_RTP.java
+
+package emi.sip;
+
+import com.sun.media.rtp.RTPSessionMgr;
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import javax.media.*;
+import javax.media.control.TrackControl;
+import javax.media.format.AudioFormat;
+import javax.media.format.UnsupportedFormatException;
+import javax.media.protocol.ContentDescriptor;
+import javax.media.protocol.DataSource;
+import javax.media.rtp.*;
+import javax.media.rtp.event.NewReceiveStreamEvent;
+import javax.media.rtp.event.ReceiveStreamEvent;
+
+public class TP_RTP extends javax.swing.JFrame implements ReceiveStreamListener {
+
+    String remoteIP;
+    int remotePort, localPort;
+    int fmt = 5;
+    private RTPSessionMgr myVoiceSessionManager = null;
+    private Processor myProcessor = null;
+    private SendStream ss = null;
+    private ReceiveStream rs = null;
+    private Player player = null;
+    private DataSource oDS = null;
+    private String soundMicInput = "javasound://0";
+
+    private void logprog(String txt) {
+        System.out.println(txt);
+    }
+
+    private boolean isPortAvailable(int port) {
+        try (DatagramSocket socket = new DatagramSocket(port)) {
+            return true; // Port is available
+        } catch (IOException e) {
+            return false; // Port is already in use
+        }
+    }
+
+
+    // Démarre la session RTP
+    public int demarrerSession(String peerIP, int peerPort, int recvPort, int fmt) throws IOException, NoDataSourceException, NoProcessorException {
+        try {
+            // Resolve the remote IP address
+            InetAddress remoteHost = InetAddress.getByName(peerIP);
+            if (remoteHost == null) {
+                logprog("Erreur: l'adresse IP distante est invalide.");
+                return -1;
+            }
+
+            // Dynamically assign a free port if recvPort is unavailable
+            if (!isPortAvailable(recvPort)) {
+                logprog("Port " + recvPort + " is already in use. Assigning a new port...");
+                DatagramSocket tempSocket = new DatagramSocket(0); // System assigns a free port
+                recvPort = tempSocket.getLocalPort();
+                tempSocket.close();
+                logprog("New receive port: " + recvPort);
+            }
+
+            // Create a local media source (microphone input)
+            MediaLocator mediaLocator = new MediaLocator("javasound://0");
+            DataSource dataSource = Manager.createDataSource(mediaLocator);
+            myProcessor = Manager.createProcessor(dataSource);
+
+            // Prepare the processor for the selected format
+            PrepareProcessor(fmt);
+            oDS = myProcessor.getDataOutput();
+
+            // Initialize the RTP session
+            myVoiceSessionManager = new RTPSessionMgr();
+            InetAddress localHost = InetAddress.getLocalHost();
+            SessionAddress localAddr = new SessionAddress(localHost, recvPort, localHost, recvPort + 1);
+            SessionAddress remoteAddr = new SessionAddress(remoteHost, peerPort, remoteHost, peerPort + 1);
+
+            myVoiceSessionManager.initSession(localAddr, null, 0.05, 0.25);
+            myVoiceSessionManager.startSession(localAddr, localAddr, remoteAddr, null);
+
+            // Start sending audio data
+            ss = myVoiceSessionManager.createSendStream(oDS, 0);
+            ss.start();
+
+            myProcessor.start();
+            logprog("RTP session started on local port: " + recvPort);
+        } catch (Exception e) {
+            System.err.println("Erreur lors du démarrage de la session RTP: " + e.getMessage());
+            return -1;
+        }
+        return 1;
+    }
+
+
+    // Arrêter la session RTP
+    public void arreterSession() {
+        if (player != null) {
+            try {
+                player.stop();
+                player.deallocate();
+                player.close();
+            } catch (Exception e) {
+                System.err.println("Error closing player: " + e.getMessage());
+            } finally {
+                player = null;
+            }
+        }
+
+        if (ss != null) {
+            try {
+                ss.stop();
+            } catch (IOException e) {
+                System.err.println("Error stopping SendStream: " + e.getMessage());
+            } finally {
+                ss = null;
+            }
+        }
+
+        if (myProcessor != null) {
+            try {
+                myProcessor.stop();
+                myProcessor.deallocate();
+                myProcessor.close();
+            } catch (Exception e) {
+                System.err.println("Error stopping processor: " + e.getMessage());
+            } finally {
+                myProcessor = null;
+            }
+        }
+
+        if (myVoiceSessionManager != null) {
+            try {
+                myVoiceSessionManager.closeSession();
+                myVoiceSessionManager.dispose();
+            } catch (Exception e) {
+                System.err.println("Error closing RTP session: " + e.getMessage());
+            } finally {
+                myVoiceSessionManager = null;
+            }
+        }
+    }
+
+    // Préparer le processeur pour le format audio
+    void PrepareProcessor(int fmt) {
+        myProcessor.configure();
+        while (myProcessor.getState()!=Processor.Configured) {
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException ex) {
+                System.out.println(TP_RTP.class.getName() + " Exception : " + ex);
+            }
+        }
+        myProcessor.setContentDescriptor(new ContentDescriptor (ContentDescriptor.RAW_RTP));
+
+        TrackControl track[]=myProcessor.getTrackControls();
+        AudioFormat af =null;
+        switch (fmt) {
+            case 3: af=new AudioFormat(AudioFormat.GSM_RTP,8000,4,1);break;
+            case 4: af=new AudioFormat(AudioFormat.G723_RTP,8000,4,1);break;
+            case 5: af=new AudioFormat(AudioFormat.ULAW_RTP);break;
+            default:logprog("unknown audio format");return;
+        }
+        track[0].setFormat(af);
+        myProcessor.realize();
+        while (myProcessor.getState() != Processor.Realized) {
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException ex) {
+                System.out.println(TP_RTP.class.getName() + " Exception : " + ex);
+            }
+        }
+    }
+
+    @Override
+    public void update(ReceiveStreamEvent event) {
+        if (event instanceof NewReceiveStreamEvent) {
+            try {
+                rs = event.getReceiveStream();
+                DataSource receivedDataSource = rs.getDataSource();
+
+                if (receivedDataSource != null) {
+                    player = Manager.createPlayer(receivedDataSource);
+                    player.start();
+                }
+            } catch (IOException | NoPlayerException ex) {
+                System.err.println("Error handling the received stream: " + ex.getMessage());
+            }
+        }
+    }
+}
+
+
+
+
+File: .\ReceiveRTP\ReceiveRTP.java
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package emi.sip.ReceiveRTP;
+
+/**
+ *
+ * @author slixo
+ */
+
+import javax.media.Manager;
+import javax.media.MediaLocator;
+import javax.media.Player;
+import javax.media.protocol.DataSource;
+
+
+public class ReceiveRTP {
+
+public static void main(String[] args) {
+        try {
+         Player player;     
+            // medialocator to receive data from this url : includes the sender that we want to receive data from
+            
+            // ip de la destination qui envoi le flux : port de la source pour la reception du flux
+            MediaLocator url = new MediaLocator("rtp://192.168.1.112:10000/audio/1");
+            
+            //or DS
+            DataSource source = Manager.createDataSource(url);
+            player = Manager.createPlayer(source);
+            
+            
+            //creating a player to receive data
+            //player = Manager.createPlayer(url);
+            player.realize();
+            player.start();
+            
+            System.out.println("Receiving...");
+            
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    
+}
+}
+
+
+
+
+
+
+
+File: .\TransmitRTP\TransmitRTP.java
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package emi.sip.TransmitRTP;
+
+
+/**
+ *
+ * @author slixo
+ */
+
+
+import javax.media.*;
+import javax.media.format.AudioFormat;
+import javax.media.protocol.ContentDescriptor;
+import javax.media.protocol.DataSource;
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+public class TransmitRTP {
+    
+     //media formats needed to build RTP stream
+   static final Format[] FORMATS = new Format[] {new AudioFormat(AudioFormat.ULAW_RTP)}; //Ulaw_RTP
+   static final ContentDescriptor CONTENT_DESCRIPTOR =new ContentDescriptor(ContentDescriptor.RAW_RTP);
+
+    
+    public static void main(String[] args) throws MalformedURLException, IOException, NoDataSourceException, NoProcessorException, CannotRealizeException, NoDataSinkException {
+
+        // media source = microphone
+        MediaLocator locator = new MediaLocator("javasound://8000");
+        
+        // creating a source that will be used in creating the processor
+        DataSource source = Manager.createDataSource(locator);
+        
+        //creating the processor form the source and formats that we want (RTP) 
+        Processor mediaProcessor = Manager.createRealizedProcessor( new ProcessorModel(source, FORMATS, CONTENT_DESCRIPTOR));
+      
+        
+        // start the processor
+        mediaProcessor.start();
+        
+        // this is the output medialocator : ip, port and data type  //to 
+        MediaLocator outputMediaLocator = new MediaLocator("rtp://192.168.1.112:10000/audio/1");
+
+        // now , we are creating a datasink from the processor's output datasource and send it to output locator
+        DataSink dataSink = Manager.createDataSink(mediaProcessor.getDataOutput(),outputMediaLocator);
+        
+         
+        
+        //open connection
+        dataSink.open();
+        
+        //start streaming the RTP data
+        dataSink.start();
+        
+        System.out.println("Transmiting...");
+
+    }
+    
+    
+}
+
+
